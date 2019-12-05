@@ -1,0 +1,48 @@
+#movie-searh-form{
+
+margin: 15px;
+}
+
+label{
+    margin-right: 5px;
+    float: left;
+    font-family:serif ;
+    
+    font-weight: bolder;
+    color: purple;
+    background: black;
+    border-start-end-radius: 20px;
+    width: 250px;
+    height: 35px;
+}
+
+#movie-input {
+    
+   width: 300px;
+   border-style: solid, 3px;
+   border-color: gold;
+}
+
+h5{
+    text-align: center;
+    font-size: 25px;
+    padding-top: 2.5px;
+}
+
+#add-movie{
+    /* float: right !important;
+    position: relative; */
+    display: inline;
+}
+
+#add-movie:hover{
+    background-color: yellowgreen;
+}
+
+.table{
+    font-family: sans-serif;
+    
+    
+    font-size: 25;
+}
+

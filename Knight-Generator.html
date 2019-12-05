@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" />
+     <link href="style.css" rel="stylesheet" type="text/css">
+    <title>Movie Search</title>
+
+    <!-- <style type="text/css">
+        button,
+        div,
+        form,
+        input {
+          margin: 10px;
+        }
+    </style> -->
+</head>
+<body>
+<div class="container-fluid" id="movie-searh-form">
+ <div class="row">
+
+     <form id="movie-form">
+         <label for="movie-input"><h5>Search for your Movie</h5></label><span></span>
+         <input type="text" id="movie-input">
+         <input id="add-movie" type="submit" value="Search" class="btn btn-warning">
+         
+         
+        </form>
+    </div>
+</div>
+
+    <div class="container">
+        <table class="table table-dark">
+            <thead>
+            <tr>
+                <th scope="col">Poster</th>
+                <th scope="col">Movie</th>
+                <th scope="col">Year</th>
+                <th scope="col">Actors</th>
+                <th scope="col">Summary</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td id="poster"></td>
+                    <td id="movie"></td>
+                    <td id="year"></td>
+                    <td id="actors"></td>
+                    <td id="summary"></td>
+                </tr>
+                
+            </tbody>
+        </table>
+    </div>
+                
+                
+                <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+                <script type="text/javascript">
+                
+                // var apiKEY = 'd1e11b64';
+                $( '#add-movie' ).on("click", function(event){
+                    event.preventDefault();
+                    var userInput = $("#movie-input").val();
+                    var queryURL = 'http://www.omdbapi.com/?t=' + userInput + '&y=&plot=short&apikey=d1e11b64';
+                    $( "#movie" ).text( userInput);
+                    $("#poster").empty();
+                    if (userInput === undefined) {
+                        alert ("Not Valid Input");
+                    }
+
+                    
+                    console.log(userInput);
+                    
+                    
+                    
+                    $.ajax({
+                        url: queryURL,
+                        method: "GET"
+                    }).then(function(response){
+                        
+                        // $("#movie").text(JSON.stringify(response.Title));
+                        $("#movie").text(response.Title);
+                        $("#year").text(response.Year);
+                        $("#actors").text(response.Actors);
+                        $("#summary").text(response.Plot);
+                        
+                        
+                        var imageUrl = (response.Poster);
+                        var image = $("<img>");
+                        
+                        image.attr("src", imageUrl);
+                        $("#poster").prepend(image);
+                        
+                        console.log(response);
+                        // console.log(response.Poster); 
+                        // console.log(JSON.stringify(response.Title));
+                        
+                    });
+                });
+                // tasks: Tap into the movie array and create buttons out of the array, once the buttons are clicked 
+                // they print the data from the array + generate the new element they get printed in.
+                // - make the Search for Movie text neon
+                //  
+                </script>
+</body>
+</html>
+                
+
+                    
+                    
+                    
+                    
+                
+                    
+                
+                
+                
+                
+                
